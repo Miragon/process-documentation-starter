@@ -8,7 +8,7 @@
     "dev": "vitepress dev",
     "build": "vitepress build",
     "preview": "vitepress preview",
-    "validate": "node ../packages/validator/src/validate.ts --root ."
+    "validate": "node scripts/validate.ts"
   },
   "devDependencies": {
     "@miragon/team-topologies-renderer": "^0.3.1",
