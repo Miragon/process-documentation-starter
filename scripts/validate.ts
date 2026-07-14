@@ -59,9 +59,8 @@ if (!validator) {
   process.exit(2);
 }
 
-const result = spawnSync(
-  process.execPath,
-  [validator, "--root", CONTENT_ROOT, ...process.argv.slice(2)],
-  { stdio: "inherit", cwd: dirname(validator) },
-);
+const result = spawnSync(process.execPath, [validator, "--root", CONTENT_ROOT, ...process.argv.slice(2)], {
+  stdio: "inherit",
+  cwd: dirname(validator),
+});
 process.exit(result.status ?? 1);

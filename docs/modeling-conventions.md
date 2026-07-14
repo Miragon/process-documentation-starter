@@ -1,21 +1,21 @@
 # Modeling Conventions
 
-Conventions exist so that models are readable by humans *and* parseable by agents.
+Conventions exist so that models are readable by humans _and_ parseable by agents.
 The `process-review` skill enforces them; the `new-process` skill applies them when scaffolding.
 
 ## Naming
 
-| Element | Convention | Example |
-|---|---|---|
-| Process id / directory | kebab-case, noun phrase | `order-to-cash` |
-| Task | Verb + object, imperative | *Check credit limit* |
-| Event | Object + past participle | *Order received*, *Invoice sent* |
-| Exclusive gateway (split) | Closed question | *Credit approved?* |
-| Outgoing sequence flows after a gateway | The answers | *yes* / *no* |
-| Pool | Organization or system | *ACME Corp*, *Customer* |
-| Lane | Role or team, not a person | *Order Management*, not *Alice* |
-| Sub-process / call activity | Same as the referenced process name | *Invoice Handling* |
-| DMN decision | The gateway question it answers | *Credit approved?* |
+| Element                                 | Convention                          | Example                          |
+| --------------------------------------- | ----------------------------------- | -------------------------------- |
+| Process id / directory                  | kebab-case, noun phrase             | `order-to-cash`                  |
+| Task                                    | Verb + object, imperative           | _Check credit limit_             |
+| Event                                   | Object + past participle            | _Order received_, _Invoice sent_ |
+| Exclusive gateway (split)               | Closed question                     | _Credit approved?_               |
+| Outgoing sequence flows after a gateway | The answers                         | _yes_ / _no_                     |
+| Pool                                    | Organization or system              | _ACME Corp_, _Customer_          |
+| Lane                                    | Role or team, not a person          | _Order Management_, not _Alice_  |
+| Sub-process / call activity             | Same as the referenced process name | _Invoice Handling_               |
+| DMN decision                            | The gateway question it answers     | _Credit approved?_               |
 
 **Vocabulary**: element names and metadata use the canonical `term` from
 `landscape/glossary.yaml`; synonyms (including German terms people actually say) live only in
@@ -25,9 +25,9 @@ the glossary. A new domain noun in a model is a prompt to add a glossary entry.
 
 1. **One start event per process** — if there are multiple triggers, model separate processes or
    use event-based gateways deliberately.
-2. **One end event per distinct outcome**, named after the outcome (*Order fulfilled*,
-   *Order rejected*). Never funnel success and failure into one unnamed end event.
-3. **Gateways split *and* join**: every splitting gateway has a matching joining gateway of the
+2. **One end event per distinct outcome**, named after the outcome (_Order fulfilled_,
+   _Order rejected_). Never funnel success and failure into one unnamed end event.
+3. **Gateways split _and_ join**: every splitting gateway has a matching joining gateway of the
    same type, unless flows end separately by design.
 4. **Model the unhappy path.** Any activity that can fail in a business-relevant way gets a
    boundary event or an explicit exception flow. Exceptions listed in `process.yaml` →

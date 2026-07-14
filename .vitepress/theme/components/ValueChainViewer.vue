@@ -4,9 +4,25 @@
 // same pattern as WardleyViewer/TeamTopologyViewer.
 import { computed } from "vue";
 
-interface Bounds { x: number; y: number; width: number; height: number }
-interface Element { id: string; name: string; elementType: "step" | "orgUnit"; bounds: Bounds }
-interface Connection { id: string; connectionType: string; source: string; target: string; waypoints: { x: number; y: number }[] }
+interface Bounds {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+}
+interface Element {
+  id: string;
+  name: string;
+  elementType: "step" | "orgUnit";
+  bounds: Bounds;
+}
+interface Connection {
+  id: string;
+  connectionType: string;
+  source: string;
+  target: string;
+  waypoints: { x: number; y: number }[];
+}
 
 const props = defineProps<{ json: string }>();
 
@@ -39,7 +55,9 @@ function chevronPoints(b: Bounds): string {
     [b.x + b.width - notch, b.y + b.height],
     [b.x, b.y + b.height],
     [b.x + notch, b.y + b.height / 2],
-  ].map((p) => p.join(",")).join(" ");
+  ]
+    .map((p) => p.join(","))
+    .join(" ");
 }
 
 function polyline(c: Connection): string {
@@ -52,7 +70,15 @@ function polyline(c: Connection): string {
     <div v-if="!model" class="viewer-error">Value chain file is not valid JSON.</div>
     <svg v-else :viewBox="viewBox" class="vc-svg" role="img" :aria-label="model.meta?.name">
       <defs>
-        <marker id="vc-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <marker
+          id="vc-arrow"
+          viewBox="0 0 10 10"
+          refX="9"
+          refY="5"
+          markerWidth="7"
+          markerHeight="7"
+          orient="auto-start-reverse"
+        >
           <path d="M 0 0 L 10 5 L 0 10 z" class="vc-arrowhead" />
         </marker>
       </defs>
@@ -73,23 +99,42 @@ function polyline(c: Connection): string {
           :ry="e.bounds.height / 2"
           class="vc-orgunit"
         />
-        <text
-          :x="e.bounds.x + e.bounds.width / 2"
-          :y="e.bounds.y + e.bounds.height / 2"
-          class="vc-label"
-        >{{ e.name }}</text>
+        <text :x="e.bounds.x + e.bounds.width / 2" :y="e.bounds.y + e.bounds.height / 2" class="vc-label">
+          {{ e.name }}
+        </text>
       </g>
     </svg>
-    <div class="viewer-hint">Value chain — interim SVG rendering (switches to @miragon/value-chain-renderer once published)</div>
+    <div class="viewer-hint">
+      Value chain — interim SVG rendering (switches to @miragon/value-chain-renderer once published)
+    </div>
   </div>
 </template>
 
 <style scoped>
-.vc-svg { display: block; width: 100%; max-height: 320px; padding: 8px 0; }
-.vc-step { fill: var(--vp-c-brand-soft); stroke: var(--vp-c-brand-1); stroke-width: 1.5; }
-.vc-orgunit { fill: var(--vp-c-default-soft); stroke: var(--vp-c-text-3); stroke-width: 1.5; }
-.vc-connection { fill: none; stroke: var(--vp-c-text-3); stroke-width: 1.5; }
-.vc-arrowhead { fill: var(--vp-c-text-3); }
+.vc-svg {
+  display: block;
+  width: 100%;
+  max-height: 320px;
+  padding: 8px 0;
+}
+.vc-step {
+  fill: var(--vp-c-brand-soft);
+  stroke: var(--vp-c-brand-1);
+  stroke-width: 1.5;
+}
+.vc-orgunit {
+  fill: var(--vp-c-default-soft);
+  stroke: var(--vp-c-text-3);
+  stroke-width: 1.5;
+}
+.vc-connection {
+  fill: none;
+  stroke: var(--vp-c-text-3);
+  stroke-width: 1.5;
+}
+.vc-arrowhead {
+  fill: var(--vp-c-text-3);
+}
 .vc-label {
   fill: var(--vp-c-text-1);
   font-size: 13px;

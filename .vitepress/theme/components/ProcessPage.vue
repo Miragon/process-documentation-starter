@@ -9,7 +9,8 @@ const p = computed(() => params.value ?? {});
 const meta = computed(() => (p.value.meta ?? {}) as Record<string, any>);
 const teams = computed(() => (p.value.teams ?? {}) as Record<string, { label: string; type: string }>);
 
-const teamLabel = (id?: string) => (id && teams.value[id] ? `${teams.value[id].label} (${teams.value[id].type})` : id ?? "—");
+const teamLabel = (id?: string) =>
+  id && teams.value[id] ? `${teams.value[id].label} (${teams.value[id].type})` : (id ?? "—");
 const docLink = (doc: string) => withBase(`/processes/${p.value.id}/${doc.replace(/\.md$/, "")}`);
 </script>
 
@@ -27,9 +28,18 @@ const docLink = (doc: string) => withBase(`/processes/${p.value.id}/${doc.replac
     <div class="process-facts">
       <table>
         <tbody>
-          <tr><th>Trigger</th><td>{{ meta.trigger }}</td></tr>
-          <tr><th>Outcome</th><td>{{ meta.outcome }}</td></tr>
-          <tr><th>Owner</th><td>{{ teamLabel(meta.owner?.team) }} — {{ meta.owner?.role }}</td></tr>
+          <tr>
+            <th>Trigger</th>
+            <td>{{ meta.trigger }}</td>
+          </tr>
+          <tr>
+            <th>Outcome</th>
+            <td>{{ meta.outcome }}</td>
+          </tr>
+          <tr>
+            <th>Owner</th>
+            <td>{{ teamLabel(meta.owner?.team) }} — {{ meta.owner?.role }}</td>
+          </tr>
           <tr v-if="meta.participants?.length">
             <th>Participants</th>
             <td>
@@ -73,14 +83,22 @@ const docLink = (doc: string) => withBase(`/processes/${p.value.id}/${doc.replac
       <h2>KPIs</h2>
       <table>
         <thead>
-          <tr><th>KPI</th><th>Target</th><th>Latest actual</th><th>Source</th></tr>
+          <tr>
+            <th>KPI</th>
+            <th>Target</th>
+            <th>Latest actual</th>
+            <th>Source</th>
+          </tr>
         </thead>
         <tbody>
           <tr v-for="k in meta.kpis" :key="k.name">
             <td>{{ k.name }}</td>
             <td>{{ k.target }}</td>
             <td>
-              <template v-if="k.actuals?.length">{{ k.actuals[k.actuals.length - 1].value }} <em>(as of {{ k.actuals[k.actuals.length - 1].date }})</em></template>
+              <template v-if="k.actuals?.length"
+                >{{ k.actuals[k.actuals.length - 1].value }}
+                <em>(as of {{ k.actuals[k.actuals.length - 1].date }})</em></template
+              >
               <template v-else>—</template>
             </td>
             <td>{{ k.source ?? "—" }}</td>
@@ -93,7 +111,8 @@ const docLink = (doc: string) => withBase(`/processes/${p.value.id}/${doc.replac
       <h2>Exceptions</h2>
       <ul>
         <li v-for="ex in meta.exceptions" :key="ex.name">
-          <strong>{{ ex.name }}</strong><template v-if="ex.frequency"> ({{ ex.frequency }})</template> — {{ ex.handling }}
+          <strong>{{ ex.name }}</strong
+          ><template v-if="ex.frequency"> ({{ ex.frequency }})</template> — {{ ex.handling }}
         </li>
       </ul>
     </template>

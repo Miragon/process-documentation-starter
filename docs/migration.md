@@ -8,7 +8,7 @@ not an imported file.
 ## 1. Inventory
 
 List the corpus in one place: document, format, location, last meaningful update, and — most
-important — *who asked about it in the last year*. Do not read everything deeply yet; the
+important — _who asked about it in the last year_. Do not read everything deeply yet; the
 inventory decides what gets read at all.
 
 **Prioritize by demand, not by folder order.** Start with the ~5 processes people actually

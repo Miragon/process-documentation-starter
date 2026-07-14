@@ -26,7 +26,7 @@ engine; the same step at 1400 cases per month is.
 
 **Never overwrite the descriptive model.** The as-is BPMN stays the documentation of record —
 it is what humans, `process-navigator`, and exported skills read. The executable variant lives
-*next to it* as `<id>.executable.bpmn` and is read by an engine. They serve different masters:
+_next to it_ as `<id>.executable.bpmn` and is read by an engine. They serve different masters:
 one optimizes for comprehension (lanes, 7 ± 2 activities, named outcomes), the other for
 execution (job types, correlation keys, retries). Merging them produces a model that serves
 neither.
@@ -35,9 +35,9 @@ Declare the variant in `process.yaml`:
 
 ```yaml
 automation:
-  status: candidate            # candidate | in-development | live
-  engine: camunda-8            # camunda-7 | camunda-8 | other (once decided)
-  model: order-to-cash.executable.bpmn   # next to the descriptive model
+  status: candidate # candidate | in-development | live
+  engine: camunda-8 # camunda-7 | camunda-8 | other (once decided)
+  model: order-to-cash.executable.bpmn # next to the descriptive model
   note: Dunning loop first; see strategy-alignment findings.
 ```
 
@@ -83,7 +83,7 @@ reminders per month — and the loop can repeat per invoice — at ≈ 18 EUR pe
 An executable `order-to-cash.executable.bpmn` would keep the invoice-handling flow and add:
 
 - a concrete timer duration on `Boundary_terms_expired`, computed from the invoice's payment
-  terms (the descriptive model deliberately says only *Payment terms expired*),
+  terms (the descriptive model deliberately says only _Payment terms expired_),
 - message correlation on `Task_await_payment` keyed by the order number — the `mining.case_id`
   — so incoming payment events find their process instance,
 - a service task binding for `Task_send_reminder` (element template for the mail/notification

@@ -21,13 +21,7 @@ export default defineConfig({
   title: "BPM Portal",
   description: "Let your processes talk — the process landscape, browsable.",
   srcDir: ".",
-  srcExclude: [
-    "**/node_modules/**",
-    "dist/**",
-    "templates/**",
-    ".claude/**",
-    "CLAUDE.md",
-  ],
+  srcExclude: ["**/node_modules/**", "dist/**", "templates/**", ".claude/**", "CLAUDE.md"],
   rewrites: {
     "processes/INDEX.md": "processes/index.md",
   },

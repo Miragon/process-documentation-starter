@@ -27,6 +27,8 @@ onUnmounted(() => viewer?.destroy());
   <div class="model-viewer">
     <div v-if="error" class="viewer-error">{{ error }}</div>
     <div v-else ref="el" class="viewer-canvas" :style="{ height: `${height}px` }" />
-    <div class="viewer-hint">DMN decision — use the tabs (bottom left) to switch between table and requirements diagram</div>
+    <div class="viewer-hint">
+      DMN decision — use the tabs (bottom left) to switch between table and requirements diagram
+    </div>
   </div>
 </template>

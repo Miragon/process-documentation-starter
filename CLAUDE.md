@@ -6,15 +6,15 @@ It is served by the [bpmniq](https://github.com/Miragon/bpm-architect) platform.
 
 ## Map
 
-| Path | What it is |
-|---|---|
-| `landscape/` | `value-chain.vc.json`, `wardley-map.owm`, `team-topology.tt`, `glossary.yaml` |
-| `processes/<id>/` | `process.yaml` (metadata + links), `<id>.bpmn`, `subprocesses/`, `decisions/` (DMN), `feedback/`, `docs/` |
-| `processes/INDEX.md` | Portfolio overview — keep in sync when adding processes |
-| `templates/process/` | Scaffold for new processes — copy, don't reinvent |
-| `dist/skills/` | Generated process-skill exports — never edit by hand, always re-export |
-| `.vitepress/` | Portal: `pnpm dev` |
-| `docs/` | method, modeling-conventions, process-metadata, governance, migration, automation |
+| Path                 | What it is                                                                                                |
+| -------------------- | --------------------------------------------------------------------------------------------------------- |
+| `landscape/`         | `value-chain.vc.json`, `wardley-map.owm`, `team-topology.tt`, `glossary.yaml`                             |
+| `processes/<id>/`    | `process.yaml` (metadata + links), `<id>.bpmn`, `subprocesses/`, `decisions/` (DMN), `feedback/`, `docs/` |
+| `processes/INDEX.md` | Portfolio overview — keep in sync when adding processes                                                   |
+| `templates/process/` | Scaffold for new processes — copy, don't reinvent                                                         |
+| `dist/skills/`       | Generated process-skill exports — never edit by hand, always re-export                                    |
+| `.vitepress/`        | Portal: `pnpm dev`                                                                                        |
+| `docs/`              | method, modeling-conventions, process-metadata, governance, migration, automation                         |
 
 ## Skills — prefer them over ad-hoc approaches
 

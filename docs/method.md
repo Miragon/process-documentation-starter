@@ -2,16 +2,16 @@
 
 Pure process management has a value problem: a repository full of BPMN diagrams that nobody
 reads is documentation, not management. Value emerges when a process is connected to the
-questions that actually matter — and when you can *ask* those questions in plain language.
+questions that actually matter — and when you can _ask_ those questions in plain language.
 
 This starter connects four complementary views. Each answers one question no other view can:
 
-| View | Question | Model | Location |
-|---|---|---|---|
-| **Value Chain** | *Where* does this process create value? | Value chain model | `landscape/` |
-| **Wardley Map** | *Why* build, buy, or automate the capabilities it uses? | Wardley map | `landscape/` |
-| **Team Topologies** | *Who* owns it, and how do teams interact around it? | Team topology model | `landscape/` |
-| **BPMN** | *How* does the work actually flow? | BPMN 2.0 diagrams (+ DMN decision tables) | `processes/` |
+| View                | Question                                                | Model                                     | Location     |
+| ------------------- | ------------------------------------------------------- | ----------------------------------------- | ------------ |
+| **Value Chain**     | _Where_ does this process create value?                 | Value chain model                         | `landscape/` |
+| **Wardley Map**     | _Why_ build, buy, or automate the capabilities it uses? | Wardley map                               | `landscape/` |
+| **Team Topologies** | _Who_ owns it, and how do teams interact around it?     | Team topology model                       | `landscape/` |
+| **BPMN**            | _How_ does the work actually flow?                      | BPMN 2.0 diagrams (+ DMN decision tables) | `processes/` |
 
 Two artifacts hold the views together: the **glossary** (`landscape/glossary.yaml`) pins the
 vocabulary all models speak, and each process's **classification** (`core` — anchored in value
@@ -40,7 +40,7 @@ its Wardley components, its owning team, its systems, KPIs, and related processe
 ```
 
 Because these links are explicit and machine-readable, an AI agent can traverse them —
-that is what makes processes *conversational*, and what makes a process **exportable as a
+that is what makes processes _conversational_, and what makes a process **exportable as a
 self-contained skill** (see the `export-process-skill` skill).
 
 ## Process architecture levels
@@ -50,7 +50,7 @@ The repository follows the classic BPM architecture pyramid:
 - **Level 1 — Landscape** (`landscape/`): the value chain is the process map. Every step of
   the value chain is realized by one or more end-to-end processes.
 - **Level 2 — End-to-end processes** (`processes/<id>/<id>.bpmn`): trigger-to-outcome flows
-  that deliver value to a customer or internal stakeholder (e.g. *Order to Cash*).
+  that deliver value to a customer or internal stakeholder (e.g. _Order to Cash_).
   One directory per process.
 - **Level 3 — Sub-processes** (`processes/<id>/subprocesses/`): decompositions of level-2
   activities, referenced from the parent via call activities or sub-process markers.
@@ -59,8 +59,8 @@ The repository follows the classic BPM architecture pyramid:
 
 ## How the views inform decisions
 
-- **Automation candidates**: a process step that leans on a *commodity* Wardley component but is
-  performed manually is an automation candidate. A *genesis* component wrapped in a rigid process
+- **Automation candidates**: a process step that leans on a _commodity_ Wardley component but is
+  performed manually is an automation candidate. A _genesis_ component wrapped in a rigid process
   is being standardized too early.
 - **Ownership friction**: a level-2 process crossing many stream-aligned teams accumulates handoff
   cost — the team topology shows where the flow fights the org (Conway's law).
@@ -75,7 +75,7 @@ Processes move through `status` values in `process.yaml`:
 
 `draft` → `to-be` → `as-is` → `deprecated`
 
-Model the *to-be* next to the *as-is* when redesigning: keep both BPMN files in the same
+Model the _to-be_ next to the _as-is_ when redesigning: keep both BPMN files in the same
 process directory (e.g. `<id>.bpmn` and `<id>.to-be.bpmn`) and record the redesign decision in
 `docs/`; `status` flips to `as-is` when the to-be model replaces the old one. Never let a
 diagram silently diverge from reality —
