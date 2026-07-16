@@ -1,11 +1,11 @@
 # process-documentation-starter
 
-A starter for **BPM process documentation** that the [bpmniq](https://github.com/Miragon/bpm-architect)
+A starter for **BPM process documentation** that the [bpmiq](https://github.com/Miragon/bpm-architect)
 platform serves: model your processes and their strategic context, then let them talk.
 
-> This repository is **auto-synced** from `process-documentation/` in the bpmniq monorepo.
+> This repository is **auto-synced** from `process-documentation/` in the bpmiq monorepo.
 > Use it as a GitHub template ("Use this template") to create your own content repository,
-> then connect it in bpmniq — the platform clones it, renders the portal, and answers
+> then connect it in bpmiq — the platform clones it, renders the portal, and answers
 > questions about it over MCP.
 
 ## Layout
@@ -28,5 +28,5 @@ pnpm install
 pnpm dev        # the portal at http://localhost:5173
 ```
 
-Validation, live co-modeling, and PR-based release come from the **bpmniq** platform once
+Validation, live co-modeling, and PR-based release come from the **bpmiq** platform once
 this repo is connected there.

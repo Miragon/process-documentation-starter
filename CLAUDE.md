@@ -2,7 +2,7 @@
 
 This repository models business processes and their strategic context, and turns them into
 conversational skills. **The models are the source of truth — ground every answer in them.**
-It is served by the [bpmniq](https://github.com/Miragon/bpm-architect) platform.
+It is served by the [bpmiq](https://github.com/Miragon/bpm-architect) platform.
 
 ## Map
 
@@ -30,7 +30,7 @@ It is served by the [bpmniq](https://github.com/Miragon/bpm-architect) platform.
 
 ## Hard rules
 
-1. `process.yaml` references must resolve. The bpmniq platform validates on release.
+1. `process.yaml` references must resolve. The bpmiq platform validates on release.
 2. BPMN files need a complete BPMNDI section (every flow node), or the visual editor breaks.
 3. Follow `docs/modeling-conventions.md`: tasks verb+object, events object+past participle,
    gateways as questions, lanes = team labels, canonical glossary terms, rules in DMN.

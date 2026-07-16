@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Example BPM content (processes, landscape, glossary) rendered as a browsable VitePress portal \u2014 the content contract the bpmniq platform serves.",
+  "description": "Example BPM content (processes, landscape, glossary) rendered as a browsable VitePress portal \u2014 the content contract the bpmiq platform serves.",
   "scripts": {
     "dev": "vitepress dev",
     "build": "vitepress build",

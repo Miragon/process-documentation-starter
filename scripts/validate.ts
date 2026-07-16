@@ -2,7 +2,7 @@
 /**
  * Validation entry point for THIS content repository.
  *
- * The actual validator is the bpmniq PLATFORM validator (@bpmniq/validator) —
+ * The actual validator is the bpmiq PLATFORM validator (@bpmiq/validator) —
  * this repo is pure data to it (its layout is the contract, no code from here
  * is ever executed). This shim only locates the validator and runs it with
  * `--root <this repo>`, so every documented invocation keeps working:
@@ -12,9 +12,9 @@
  *   pnpm validate [<id>]                 # same, via package.json
  *
  * Resolution order:
- *   1. BPMNIQ_VALIDATOR   — explicit path to the validator's validate.ts
- *   2. ../packages/validator/src/validate.ts   — inside the bpmniq monorepo
- *   3. node_modules/@bpmniq/validator          — installed dependency (starter)
+ *   1. BPMIQ_VALIDATOR   — explicit path to the validator's validate.ts
+ *   2. ../packages/validator/src/validate.ts   — inside the bpmiq monorepo
+ *   3. node_modules/@bpmiq/validator          — installed dependency (starter)
  */
 import { spawnSync } from "node:child_process";
 import { existsSync } from "node:fs";
@@ -25,7 +25,7 @@ import { fileURLToPath } from "node:url";
 const CONTENT_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 
 function findValidator(): string | undefined {
-  const explicit = process.env.BPMNIQ_VALIDATOR;
+  const explicit = process.env.BPMIQ_VALIDATOR;
   if (explicit && existsSync(explicit)) return resolve(explicit);
   // monorepo sibling — but only when its dependencies are actually installed:
   // a bare checkout (e.g. the starter mirrored INSIDE a monorepo checkout in
@@ -35,7 +35,7 @@ function findValidator(): string | undefined {
     return join(monorepoPkg, "src", "validate.ts");
   }
   try {
-    return createRequire(join(CONTENT_ROOT, "package.json")).resolve("@bpmniq/validator");
+    return createRequire(join(CONTENT_ROOT, "package.json")).resolve("@bpmiq/validator");
   } catch {
     return undefined;
   }
@@ -45,13 +45,13 @@ const validator = findValidator();
 if (!validator) {
   console.error(
     [
-      "Cannot find the bpmniq platform validator.",
+      "Cannot find the bpmiq platform validator.",
       "",
-      "This content repository is validated by @bpmniq/validator (it treats this",
+      "This content repository is validated by @bpmiq/validator (it treats this",
       "repo as pure data — see docs/governance.md). To run it locally, either:",
-      "  - work inside the bpmniq monorepo (packages/validator is picked up automatically),",
-      "  - add @bpmniq/validator as a devDependency of this repo, or",
-      "  - point BPMNIQ_VALIDATOR at a checkout's packages/validator/src/validate.ts.",
+      "  - work inside the bpmiq monorepo (packages/validator is picked up automatically),",
+      "  - add @bpmiq/validator as a devDependency of this repo, or",
+      "  - point BPMIQ_VALIDATOR at a checkout's packages/validator/src/validate.ts.",
       "",
       "Pull requests are always validated by the platform on release.",
     ].join("\n"),
