@@ -1,21 +1,24 @@
 # CODEOWNERS — decision rights per path.
 # Merge approval = release: a required review from the owning team IS the release decision.
 #
-# TODO: Replace every placeholder below with your real GitHub org and team slugs
-#       (e.g. @acme/order-management). Placeholders will silently match nothing.
+# TODO: When using this template, replace @dominikhorn93 below with your real GitHub org
+#       and team slugs (e.g. @acme/order-management).
 #
 # GitHub ignores lines starting with #. Later entries win over earlier ones,
 # so process-specific rules must come AFTER the repo-wide rules.
 
+# ── Repository default ──────────────────────────────────────────────
+*                 @dominikhorn93
+
 # ── Contract, skills & shared config — method owner ─────────────────
-/designiq.yml     @your-org/process-excellence
+/designiq.yml     @dominikhorn93
 # the contract file's legacy name — still read, so still owned (legacy-name-ok)
-/bpmiq.yml        @your-org/process-excellence
-/.claude/         @your-org/process-excellence
-/.github/         @your-org/process-excellence
+/bpmiq.yml        @dominikhorn93
+/.claude/         @dominikhorn93
+/.github/         @dominikhorn93
 
 # ── Processes — one entry per .bpmn, owned by the responsible team ──
 # A process is a file: processes/<id>.bpmn (id = the file stem).
-/processes/order-to-cash.bpmn   @your-org/order-management
+/processes/order-to-cash.bpmn   @dominikhorn93
 
 # TODO: Add one line per new process .bpmn when the new-process skill scaffolds it.
